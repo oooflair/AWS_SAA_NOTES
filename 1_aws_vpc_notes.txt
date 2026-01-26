@@ -1,0 +1,117 @@
+AWS VPC — Notes
+
+1. What is a VPC?
+- VPC (Virtual Private Cloud) is a logically isolated network in AWS.
+- You control IP range, subnets, routing, internet access and security.
+- Think of VPC as your own data center in AWS.
+
+2. VPC CIDR Block
+- VPC is created with an IPv4 CIDR block.
+- CIDR range must be between /16 and /28.
+
+Examples:
+10.0.0.0/16   (recommended)
+192.168.0.0/16
+172.31.0.0/16
+
+3. VPC CIDR Rules
+- CIDR must be private IP range.
+- Cannot overlap with another VPC (for peering).
+- Cannot be modified after creation.
+- Additional CIDR blocks can be added later.
+
+4. Default VPC
+AWS creates a default VPC automatically.
+
+Default VPC features:
+- CIDR: 172.31.0.0/16
+- Public subnets in each AZ
+- Internet Gateway attached
+- Route table configured
+- Auto-assign public IP enabled
+
+5. Custom VPC
+- Created manually.
+- No subnets by default.
+- No Internet Gateway.
+- No route tables configured.
+
+6. VPC Components
+- Subnets
+- Route Tables
+- Internet Gateway (IGW)
+- NAT Gateway
+- Security Groups
+- Network ACLs
+
+7. Internet Connectivity
+
+Public access:
+Subnet → Route Table → IGW → Internet
+
+Private access:
+Subnet → Route Table → NAT Gateway → IGW → Internet
+
+8. VPC Routing
+- Every VPC has a main route table.
+- Subnets must be associated with a route table.
+- If not associated, main route table is used.
+
+9. VPC Communication
+- Resources inside same VPC communicate by default.
+- Controlled using Security Groups and NACLs.
+
+10. VPC Peering
+- Private connection between two VPCs.
+- Works across regions and accounts.
+- CIDR blocks must not overlap.
+- Peering is not transitive.
+
+11. VPC Endpoints
+- Used to access AWS services privately.
+- Types:
+  - Interface Endpoint
+  - Gateway Endpoint (S3, DynamoDB)
+
+12. IPv6 in VPC
+- Optional IPv6 CIDR can be added.
+- Supports IPv4 only, IPv6 only and dual stack.
+
+13. VPC Deletion Rules
+Cannot delete VPC if it contains:
+- Subnets
+- Internet Gateway attached
+- NAT Gateway
+- EC2 instances
+- ENIs
+
+Deletion order:
+1. Delete instances
+2. Delete NAT Gateway
+3. Detach and delete IGW
+4. Delete subnets
+5. Delete route tables
+6. Delete VPC
+
+Key Exam Points
+- VPC is region specific.
+- VPC spans multiple Availability Zones.
+- CIDR cannot be modified after creation.
+- Subnets are AZ specific.
+- Default VPC is internet enabled.
+- Custom VPC is isolated by default.
+
+Example Architecture:
+
+VPC: 10.0.0.0/16
+
+AZ-1:
+  Public Subnet   10.0.1.0/24
+  Private Subnet  10.0.11.0/24
+
+AZ-2:
+  Public Subnet   10.0.2.0/24
+  Private Subnet  10.0.12.0/24
+
+One-line Definition:
+A VPC is a logically isolated virtual network in AWS where you define IP addressing, routing and security.

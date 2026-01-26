@@ -1,0 +1,90 @@
+1️⃣ What is a Subnet?
+    A subnet is a range of IP addresses within a VPC.
+    Subnets divide a VPC into smaller networks.
+    Each subnet resides in one Availability Zone only.
+2️⃣ Subnet Rules
+    ✔ Subnet must be within VPC CIDR range
+        Example
+          VPC CIDR:
+            192.168.0.0/16
+          Valid:
+            192.168.10.0/24
+          Invalid:
+            10.100.10.0/24 ❌
+    ✔ Subnets cannot overlap
+          Invalid:
+            10.0.0.0/24
+            10.0.0.128/25   ❌
+          Valid:
+            10.0.0.0/25
+            10.0.0.128/25
+    ✔ Subnet size limits
+            CIDR	Total IPs
+            /28	    16
+            /27	    32
+            /26	    64
+            /25	    128
+            /24	    256
+            /16	    65,536
+            Minimum subnet size: /28
+            Maximum subnet size: /16
+3️⃣ AWS Reserved IP Addresses: 
+    ✔ AWS reserves 5 IPs per subnet.
+      Example (10.0.1.0/24):
+      Address	    Purpose
+      .0	        Network
+      .1	        AWS Router
+      .2	        DNS
+      .3	        Reserved
+      .255	      Broadcast
+  ✔ Usable IPs = 256 − 5 = 251
+
+4️⃣ Public vs Private Subnet: Subnet type is decided by route table, not by name.
+      ✔ Public Subnet
+          0.0.0.0/0 → Internet Gateway
+          Internet accessible
+          Public IP required
+      ✔ Private Subnet
+          No IGW route
+          Uses NAT Gateway for outbound internet
+5️⃣ Subnet Communication: 
+     ✔ Subnets inside the same VPC communicate by default
+          Controlled using:
+              Security Groups
+              Network ACLs
+6️⃣ IPv6 Support
+       ✔ Subnets can be:
+            IPv4 only
+            IPv6 only
+            Dual stack (IPv4 + IPv6)
+7️⃣ Auto-Assign Public IP
+      ✔ Optional per subnet
+      ✔ Automatically assigns public IPv4/IPv6 on launch
+8️⃣ Subnet Deletion Rules
+    ❌ Cannot delete subnet or VPC if it contains:
+          EC2 instances
+          Load balancers
+          NAT Gateways
+          Network Interfaces (ENI)
+    ✔ Deletion order:
+          Terminate/move instances
+          Delete NAT Gateway
+          Delete Load Balancers
+          Remove ENIs
+          Delete subnet
+          Delete VPC
+9️⃣ Key Exam Points
+          Subnets must lie within VPC CIDR
+          Subnets cannot overlap
+          One subnet = one Availability Zone
+          Route table decides public/private
+          AWS reserves 5 IPs per subnet
+          Cannot delete subnet with running resources
+
+🔁 Example Architecture
+        VPC: 10.0.0.0/16
+        Public Subnet:   10.0.1.0/24
+        Private Subnet:  10.0.11.0/24
+
+📌 One-Line Definition
+      A subnet is a logical subdivision of a VPC that defines an IP range and resides within a single Availability Zone.
