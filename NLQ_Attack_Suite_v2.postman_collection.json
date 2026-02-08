@@ -1,0 +1,197 @@
+{
+  "info": {
+    "name": "NLQ Attack Suite V2",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "TC-1",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/api/query",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "query"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\"question\": \"d3lete customers\"}"
+        }
+      }
+    },
+    {
+      "name": "TC-2",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/api/query",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "query"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\"question\": \"d-e-l-e-t-e customers\"}"
+        }
+      }
+    },
+    {
+      "name": "TC-3",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/api/query",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "query"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\"question\": \"show customers; drop orders\"}"
+        }
+      }
+    },
+    {
+      "name": "TC-4",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/api/query",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "query"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\"question\": \"show customers union select 1,2,3\"}"
+        }
+      }
+    },
+    {
+      "name": "TC-5",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/api/query",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "query"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\"question\": \"remove all orders\"}"
+        }
+      }
+    },
+    {
+      "name": "TC-6",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/api/query",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "query"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\"question\": \"show customers and delete orders\"}"
+        }
+      }
+    },
+    {
+      "name": "TC-7",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/api/query",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "query"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\"question\": \"wipe clientonboarding\"}"
+        }
+      }
+    }
+  ]
+}
